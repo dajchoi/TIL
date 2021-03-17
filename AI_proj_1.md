@@ -9,7 +9,7 @@
 자율주행이나 의료영상에 흔히 적용되고 있다. 이외에도 객체의 위치판독, 모양 분류, 또는 더 광범위하게 객체 자체에서의 분류까지 다양한 목적으로 사용되고 있다고 보면 되겠다. 
 
 #### 과정
-일반적인 과정은 일반적으로 Encoder과 Decoder의 작용으로 정의를 내릴 수 있다. 
+일반적인 과정을 Encoder과 Decoder의 작용으로 정의를 내릴 수 있다. 
 ##### Encoder: pre-trained classification network (학습된 모델-VGG/ResNet) 
 ##### Decoder: Encoder에서의 구분된 특징들을 픽셀별로 구분지어 더 정밀한 분류를 거치는 단계 
 Encoder와 Decoder의 작용에도 다른 접근 방식이 있다. 
