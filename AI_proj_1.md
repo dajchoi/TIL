@@ -1,4 +1,4 @@
-##### Semantic Segmentation
+## Semantic Segmentation
 
 #### Semantic Image Segmentation 이란?
 이미지에서 각 pixel을 분류하는 것이다. 이를 통해 객체들은 각 특성에 따라 분할된다. 결국은 신경망을 pixel-wise mask로 나타낼 수 있게끔 거치는 일련의 과정이라 일컬을 수 있겠다. 
@@ -10,8 +10,8 @@
 
 #### 과정
 일반적인 과정은 일반적으로 Encoder과 Decoder의 작용으로 정의를 내릴 수 있다. 
-## Encoder: pre-trained classification network (학습된 모델-VGG/ResNet) 
-## Decoder: Encoder에서의 구분된 특징들을 픽셀별로 구분지어 더 정밀한 분류를 거치는 단계 
+##### Encoder: pre-trained classification network (학습된 모델-VGG/ResNet) 
+##### Decoder: Encoder에서의 구분된 특징들을 픽셀별로 구분지어 더 정밀한 분류를 거치는 단계 
 Encoder와 Decoder의 작용에도 다른 접근 방식이 있다. 
 #### 1. Region-based Semantic Segmentation
 object detection을 기반으로 CNN과정을 거치는 방식 (유의미한 부분만 따로 추려내 CNN을 실행시키는 것)
