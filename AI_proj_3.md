@@ -13,6 +13,15 @@ cv2.IMREAD_COLOR  --> loads a color image
     IMREAD_UNCHANGED  --> loads image including alpha channel
     
     또는 따로 imread를 사용하여 위와 같은 3가지 경우를 -1,0,1로 second argument에서 설정해서 넣습니다
+    
+##### 색상을 표현하는 방식으로 RGB방식이 있음 0~255사이의 값으로 표시, 값이 커질 시에 해당 색상의 빛이 밝아집니다.
+RGB(255,255,255) -> 흰색
+RGB(0,0,0) -> 검은색
+하지만 opencv의 방식을 사용할 경우 BGR로 표현합니다. 
+IMREAD_COLOR -> BGR 방식으로 이미지를 읽습니다.
+
+
+
 #### Writing an image
 cv2.imwrite(파일 이름, img) -
 
@@ -20,3 +29,4 @@ cv2.imwrite(파일 이름, img) -
 대게 matplotlib을 사용하여 image를 시각화합니다. 
 from matplotlib import pyplot as plt를 하게 되면 
 두가지 경우로 나눌 수 있게 됩니다 
+
