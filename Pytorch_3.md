@@ -12,6 +12,20 @@ weight_decay값을 너무 크게하면 반대로 언더피팅현상이 일어날
 의미: 특정확률로 뉴런을 비활성화 시킴으로써 연산에 포함되지 않게 합니다. 
 *학습이 끝나고 평가시에는 model.eval()이 필요합니다.*
 
+mnist_train = dset.MNIST(
+    './', 
+    train=True, 
+    transform = transforms.Compose([
+        transforms.Resize(34),                        # 원래 28x28인 이미지를 34x34로 늘립니다.
+        transforms.CenterCrop(28),                    # 중앙 28x28를 뽑아냅니다.
+        transforms.RandomHorizontalFlip(),            # 랜덤하게 좌우반전 합니다.
+        transforms.Lambda(lambda x: x.rotate(90)),    # 람다함수를 이용해 90도 회전해줍니다.
+        transforms.ToTensor(),                        # 이미지를 텐서로 변형합니다.
+    ]),
+    target_transform=None,
+    download=True
+)
+
 ##### 3. 데이터 증강 (Data Augmentation) 
 목표: overfitting 해소 / 테스트 데이터의 정확도 향상
 의미: 알고리즘을 통해 훈련데이터의 수를 늘리는 방법입니다. 
