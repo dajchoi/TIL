@@ -46,3 +46,32 @@ if torch.cuda.is_available():
   z = x + y
   print(z)
   print(z.to("cpu",torch.double)) # dtype도 함께 변경함
+  
+  ________________________________________________________
+  
+ #### Autograd (자동 미분) 
+ :tensor의 모든 연산에 대해 자동미분을 제공합니다.
+ ##### *torch.Tensor*
+ *.requires_grad = True*
+ 모든 연산을 추적합니다. 
+ 그리고 그 계산을 완료 한 다음 
+ *.backward()* 
+ 모든 변화도(gradient)를 
+ 자동으로 계산합니다. 
+ 
+ 연산에 대한 기록추적을 중단하기 위해서는 
+ (1) .detach()의 방법
+ (2) with torch.no_grad()의 블록 생성
+ 변화도는 필요치 않습니다.
+ 
+ requires_grad=True 설정 시에
+ 학습 가능한 매개변수를 갖는 모델을 평가(evaluate)할 때 유용합니다. 
+ 
+ ##### *Function*
+ .grad_fn : 연산의 결과로 생성된 값입니다
+ requires_grad=True 설정한 다음 .grad_fn을 부를 수 있습니다.
+ 
+ 변화도 (Gradient)
+ 역전파 (Backprop) 
+ 
+ 
