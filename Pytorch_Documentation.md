@@ -74,4 +74,41 @@ if torch.cuda.is_available():
  변화도 (Gradient)
  역전파 (Backprop) 
  
+  ________________________________________________________
+  
+ #### Classfier 분류기
+ 데이터를 다루는 법:
+ 이미지, 텍스트, 오디오, 비디오 데이터를 표준 Python 패키지에 포함된 NumPy배열로 불러오면 됩니다.
+ 그런 다음 torch.Tensor로 변환 시켜 줍니다.
  
+ 데이터의 종류에 따라 유용하게 쓰이는 패키지 또한 다릅니다. 
+ 이미지 : Pillow OpenCV
+ 오디오 : SciPy LibROSA
+ 텍스트 : Python / Cython, NLTK / SpaCy
+ 영상/비디오 : torchvision -> ImageNet, CIFAR10, MNIST
+ 
+ .datasets           ㅡㅡㅜ
+ data transformer    ㅡㅡㅡ>    torch.utils.data.DataLoader
+ 
+ ##### 이미지 분류의 학습 단계
+
+1. 학습용/시험용 데이터셋 불러와 정규화(Normalizing)를 진행합니다. 
+2. 합성곱 신경망(CNN)을 정의합니다.
+3. 손실함수를 정의합니다.
+4. 학습용 데이터를 사용하여 신경망을 학습합니다.
+5. 시험용 데이터를 사용하여 신경망을 검사합니다. 
+*학습용 데이터는 신경망 학습을 뜻하고
+*시험용 데이터는 신경망 검사를 뜻합니다. 
+
+
+우선 1의 source code로는 
+import torchvision.transforms as transforms를 할 경우
+
+transform = transforms.Compose([transforms.ToTensor(), transforms.Normalize((0.5,0.5,0.5), (0.5,0.5,0.5))])
+
+trainset = torchvision.datasets.CIFAR10(root=  , train=True, download=True, transform=transform) #위에 것 사용
+trainloader = torch.utils.data.DataLoader(trainset, batch_size=4, shuffle=True, num_workers=2)
+testset = torchvision.datasets.CIFAR10(root=  , train=False, download=True, transform=transform) #위에 것 사용대신 테스트용이므로 train은 False로
+testloader = torch.utils.data.DataLoader(testset, batch_size=4, shuffle=False, num_workers=2)
+
+classes= () #이미지에 따른 분류 클래스 , 나중에 매칭을 통해 정확도 계산이 가능해짐
